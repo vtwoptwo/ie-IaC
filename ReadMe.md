@@ -1,10 +1,26 @@
+#How to set up IaC for Azure using CLI
+
+
+1. [Install Azure Cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+
+2. Login to Azure 
+
+```sh
 az login
+```
 
+3. take the "id" of the azure account you want to use
+```sh
 az account show
+```
+4. Set your subscription
+```sh
+account set --subscription <id of azure account>
+```
+5. 
 
-take the id:
-045bb7f3-5b40-43fa-beac-ca50aae53d35
+```sh
+az deployment group create --resource-group <name of resource group> --template-file <path of file>
+```
 
-account set --subscription 045bb7f3-5b40-43fa-beac-ca50aae53d35
-
-C:\Users\Vera\OneDrive\Documents\SKUWL\cook\ie-iac\main.bicep
+##Done!
