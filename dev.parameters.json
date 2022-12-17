@@ -6,7 +6,7 @@
             "value": "vprohaska-assignment-dev-"
         },
       
-        "appServicePlanName2": {
+        "appServicePlanName": {
             "value": "vprohaska-assignment-dev-serviceplan"
         },
         "storageAccountName": {
