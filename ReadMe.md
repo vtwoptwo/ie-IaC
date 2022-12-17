@@ -56,7 +56,7 @@ az deployment group create --resource-group <name of resource group> --template-
         }
 ```
 
-6. Configuring the Secrets per pipeline
+1. Configuring the Secrets per pipeline
  <table align="center" >
   <tr>
     <th>----</th>
@@ -119,4 +119,3 @@ Make sure to set up your azure credentials
 ```
 
 
-##Done!
