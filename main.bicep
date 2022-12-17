@@ -41,11 +41,11 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
     }
   }
 
-  module appService 'modules/appModule.bicep' = [ for name in names: {
-    name: 'appService + ${name}'
+  module appService 'modules/appModule.bicep' = [  for i in range(0,2): {
+    name: 'appService + ${names[i]}'
     params: {
       location: location
-      appServiceAppName:'${appServiceAppName} + ${name}'
+      appServiceAppName:'${appServiceAppName} + ${names[i]}'
       appServicePlanName: appServicePlanName
       environmentType: environmentType
       dbhost: dbhost
@@ -57,7 +57,8 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
 
  // output using loop
 
-  output appServiceAppHostName array = [ for name in names: {
-    name: 'appService + ${name}'
-    value: appService[name].outputs.appServiceAppHostName
+  output appServiceAppHostName array = [ for i in range(0,2): {
+    name: 'appService + ${names[i]}'
+    value: appService[names[i]].outputs.appServiceAppHostName
   }]
+ 
