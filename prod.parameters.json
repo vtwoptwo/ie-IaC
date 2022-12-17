@@ -3,13 +3,14 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "appServiceAppName": {
-            "value": "vrpohaska-app-prod-bicep"
+            "value": "vprohaska-assignment-prod-"
         },
+        
         "appServicePlanName": {
-            "value": "vprohaska-app-prod-bicep"
+            "value": "vprohaska-assignment-prod-serviceplan"
         },
         "storageAccountName": {
-            "value": "vprohaskadevstorage"
+            "value": "vprohaska-assignment-prod-storage"
         }
     }
 }
