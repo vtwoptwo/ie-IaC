@@ -1,22 +1,22 @@
 @sys.description('The Web App name.')
 @minLength(3)
-@maxLength(24)
+@maxLength(60)
 param appServiceAppName string 
 @sys.description('The App Service Plan name.')
 @minLength(3)
-@maxLength(24)
+@maxLength(60)
 param appServicePlanName string 
 @sys.description('The Storage Account name.')
 @minLength(3)
-@maxLength(24)
+@maxLength(60)
 param storageAccountName string
 @allowed([
   'nonprod'
   'prod'
   ])
 param environmentType string = 'nonprod'
-param location string = resourceGroup().location
-param names array = [ 'FE-app', 'BE-app' ]
+param location string = 'eastus'
+param names array = [ 'FE', 'BE' ]
 @secure()
 param dbhost string
 @secure()
@@ -27,7 +27,7 @@ param dbpass string
 param dbname string
 
 
-var storageAccountSkuName = (environmentType == 'dev' ) ? 'Standard_GRS' : 'Standard_LRS'  
+var storageAccountSkuName = (environmentType == 'dev') ? 'Standard_GRS' : 'Standard_LRS'  
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
     name: storageAccountName
@@ -41,11 +41,11 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
     }
   }
 
-  module appService 'modules/appModule.bicep' = [ for name in names: {
-    name: 'appService + ${name}'
+  module appService 'modules/appModule.bicep' = [  for i in range(0,2): {
+    name: 'appService${names[i]}'
     params: {
       location: location
-      appServiceAppName:'${appServiceAppName} + ${name}'
+      appServiceAppName:'${appServiceAppName}${names[i]}'
       appServicePlanName: appServicePlanName
       environmentType: environmentType
       dbhost: dbhost
@@ -57,7 +57,8 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
 
  // output using loop
 
-  output appServiceAppHostName array = [ for name in names: {
-    name: 'appService + ${name}'
-    value: appService[name].outputs.appServiceAppHostName
+  output appServiceAppHostName array = [ for i in range(0,2): {
+    name: 'appService${names[i]}'
+    value: appService[i].outputs.appServiceAppHostName
   }]
+ 

@@ -1,4 +1,4 @@
-param location string = resourceGroup().location
+param location string = 'eastus'
 param appServiceAppName string
 param appServicePlanName string
 @allowed([
@@ -14,10 +14,13 @@ param dbname string
 
 var appServicePlanSkuName = (environmentType == 'dev' ) ? 'P2V2' : 'F1'
 
-
 resource appServicePlan 'Microsoft.Web/serverFarms@2022-03-01' = {
   name: appServicePlanName
   location: location
+  kind: 'linux'
+  properties: {
+    reserved: true
+  }
   sku: {
     name: appServicePlanSkuName
   }
@@ -31,6 +34,7 @@ properties: {
   serverFarmId: appServicePlan.id
   httpsOnly: true
   siteConfig: {
+    linuxFxVersion: 'python|3.10'
     appSettings: [
       {
       name: 'DBUSER'
