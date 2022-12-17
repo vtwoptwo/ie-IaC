@@ -57,7 +57,35 @@ az deployment group create --resource-group <name of resource group> --template-
         }
 ```
 
-2. Configuring the Secrets per pipeline
+
+
+2.Note that I used a loop in the main.bicep folder, in order to create to App Services at once, with DEV or PROD nomenclature respectively.
+
+```sh
+ module appService 'modules/appModule.bicep' = [  for i in range(0,2): {
+    name: 'appService${names[i]}'
+    params: {
+      location: location
+      appServiceAppName:'${appServiceAppName}${names[i]}'
+      appServicePlanName: appServicePlanName
+      environmentType: environmentType
+      dbhost: dbhost
+      dbuser: dbuser
+      dbpass: dbpass
+      dbname: dbname
+    }
+  }]
+
+ // output using loop
+
+  output appServiceAppHostName array = [ for i in range(0,2): {
+    name: 'appService${names[i]}'
+    value: appService[i].outputs.appServiceAppHostName
+  }]
+ 
+```
+
+3. Configuring the Secrets per pipeline
  <table align="center" >
   <tr>
     <th>----</th>
