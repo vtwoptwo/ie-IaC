@@ -26,7 +26,7 @@ az deployment group create --resource-group <name of resource group> --template-
 
 ### IaC using GitHub Actions
 
-6. Naming Convention in the file to configure different environments and respective deployment names of the resources
+1. Naming Convention in the file to configure different environments and respective deployment names of the resources
 
 'dev' pipeline
 ```sh
@@ -56,7 +56,7 @@ az deployment group create --resource-group <name of resource group> --template-
         }
 ```
 
-1. Configuring the Secrets per pipeline
+2. Configuring the Secrets per pipeline
  <table align="center" >
   <tr>
     <th>----</th>
@@ -69,10 +69,10 @@ az deployment group create --resource-group <name of resource group> --template-
   </tr>
   <tr>  
     <td>Secret Type </td>
-    <td>Environtment Secret</td>
-    <td>Environtment Secret</td>
-    <td>Environment Secret</td>
-    <td>Environment Secret</td>
+    <td>Environtment Secret for development/production respectively</td>
+    <td>Environtment Secret for development/production respectively</td>
+    <td>Environment Secret for development/production respectively</td>
+    <td>Environment Secret for development/production respectively</td>
     <td>Repository Secret</td>
     </tr>
 
@@ -81,7 +81,7 @@ az deployment group create --resource-group <name of resource group> --template-
     <td>database host user</td>
     <td>database host server</td>
     <td>password for the db server</td>
-    <td>database name for development/production respectively</td>
+    <td>database name </td>
     <td href = "#Credentials">azure credentials json</td>
 </tr>
 </tr>
