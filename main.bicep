@@ -59,6 +59,6 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
 
   output appServiceAppHostName array = [ for i in range(0,2): {
     name: 'appService + ${names[i]}'
-    value: appService[names[i]].outputs.appServiceAppHostName
+    value: appService[i].outputs.appServiceAppHostName
   }]
  
