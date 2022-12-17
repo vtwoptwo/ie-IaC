@@ -1,14 +1,14 @@
 @sys.description('The Web App name.')
 @minLength(3)
-@maxLength(24)
+@maxLength(60)
 param appServiceAppName string 
 @sys.description('The App Service Plan name.')
 @minLength(3)
-@maxLength(24)
+@maxLength(60)
 param appServicePlanName string 
 @sys.description('The Storage Account name.')
 @minLength(3)
-@maxLength(24)
+@maxLength(60)
 param storageAccountName string
 @allowed([
   'nonprod'
