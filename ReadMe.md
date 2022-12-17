@@ -1,5 +1,6 @@
 #How to set up IaC for Azure using CLI
 
+### IaC using Azure CLI
 
 1. [Install Azure Cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 
@@ -22,10 +23,13 @@ account set --subscription <id of azure account>
 ```sh
 az deployment group create --resource-group <name of resource group> --template-file <path of file>
 ```
-6. Naming Convention
+
+### IaC using GitHub Actions
+
+6. Naming Convention in the file to configure different environments and respective deployment names of the resources
 
 'dev' pipeline
-
+```sh
 "parameters": {
         "appServiceAppName": {
             "value": "vprohaska-assignment-FE-app"
@@ -36,10 +40,10 @@ az deployment group create --resource-group <name of resource group> --template-
         "storageAccountName": {
             "value": "vprohaska-assignment-dev-storage"
         }
-        
+``` 
 
 'prod' pipeline
-
+```sh
 "parameters": {
         "appServiceAppName": {
             "value": "vprohaska-assignment-prod-app"
@@ -50,18 +54,69 @@ az deployment group create --resource-group <name of resource group> --template-
         "storageAccountName": {
             "value": "vprohaska-assignment-prod-storage"
         }
-        
-Secrets:
+```
 
-DBUSER: database host user
-DBHOST: database host server
-DBPASS: password
-DBNAME: database name for development
+6. Configuring the Secrets per pipeline
+ <table align="center" >
+  <tr>
+    <th>----</th>
+    <th>DBUSER</th>
+    <th>DBHOST</th>
+    <th>DBPASS</th>
+    <th>DBNAME</th>
+    <th>AZURE_CREDENTIALS</th>
+    
+  </tr>
+  <tr>  
+    <td>Secret Type </td>
+    <td>Environtment Secret</td>
+    <td>Environtment Secret</td>
+    <td>Environment Secret</td>
+    <td>Environment Secret</td>
+    <td>Repository Secret</td>
+    </tr>
 
-__________________
+  <tr>  
+    <td>Decription </td>
+    <td>database host user</td>
+    <td>database host server</td>
+    <td>password for the db server</td>
+    <td>database name for development/production respectively</td>
+    <td href = "#Credentials">azure credentials json</td>
+</tr>
+</tr>
+</table>
 
-DBNAME: databasename for production
 
+
+### Credentials 
+
+Make sure to set up your azure credentials
+```sh
+{
+
+  "clientId": ,
+
+  "clientSecret": ,
+
+  "subscriptionId": ,
+
+  "tenantId": ,
+
+  "activeDirectoryEndpointUrl": ,
+
+  "resourceManagerEndpointUrl": ,
+
+  "activeDirectoryGraphResourceId":,
+
+  "sqlManagementEndpointUrl": ,
+
+  "galleryEndpointUrl": ,
+
+  "managementEndpointUrl": 
+
+}
+```
 
 
 ##Done!
