@@ -1,4 +1,4 @@
-param location string = resourceGroup().location
+param location string = 'eastus'
 param appServiceAppName string
 param appServicePlanName string
 @allowed([
@@ -12,7 +12,7 @@ param dbuser string
 param dbpass string
 param dbname string
 
-var appServicePlanSkuName = (environmentType == 'prod' ) ? 'P1V3' : 'F1'
+var appServicePlanSkuName = (environmentType == 'prod' ) ? 'P2V3' : 'F1'
 
 resource appServicePlan 'Microsoft.Web/serverFarms@2022-03-01' = {
   name: appServicePlanName

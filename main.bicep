@@ -15,7 +15,7 @@ param storageAccountName string
   'prod'
   ])
 param environmentType string = 'nonprod'
-param location string = resourceGroup().location
+param location string = 'eastus'
 param names array = [ 'FE', 'BE' ]
 @secure()
 param dbhost string
