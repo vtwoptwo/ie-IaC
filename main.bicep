@@ -16,7 +16,7 @@ param storageAccountName string
   ])
 param environmentType string = 'nonprod'
 param location string = resourceGroup().location
-param names array = [ 'FE-app', 'BE-app' ]
+param names array = [ 'FE', 'BE' ]
 @secure()
 param dbhost string
 @secure()
