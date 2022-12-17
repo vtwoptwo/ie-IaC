@@ -10,7 +10,7 @@
             "value": "vprohaska-assignment-prod-serviceplan"
         },
         "storageAccountName": {
-            "value": "vprohaska-assignment-prod-storage"
+            "value": "vprohaskaprodstorage"
         }
     }
 }
