@@ -19,7 +19,7 @@ az account show
 ```sh
 account set --subscription <id of azure account>
 ```
-5. 
+5. link to your file and run the script
 
 ```sh
 az deployment group create --resource-group <name of resource group> --template-file <path of file>
