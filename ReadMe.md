@@ -1,4 +1,5 @@
-#How to set up IaC for Azure using CLI
+# How to set up IaC for Azure 
+
 
 ### IaC using Azure CLI
 
